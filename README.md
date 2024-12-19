@@ -1,7 +1,7 @@
 # AzorHostexApi
 Api para integração com a Hostex (aplicativos de hospedagem como (AirBnb, Booking.com)
 
-# Hotex
+# Hostex
 
 Responsável pela integração com as aplicações de hospedagem como AirBnb, Booking.com entre outras apliciações.
 
