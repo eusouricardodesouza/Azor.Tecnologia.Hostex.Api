@@ -30,3 +30,35 @@ builder.Services.AddAzorHostexApi(hostexAccessToken);
 
 Sendo o hostexAccessToken o token que você cria junto a conta diretamente no cadastro com a Hostex
 ```
+
+```bash
+# .Exemplo de consumo da Api com Asp.net Core
+
+
+[ApiController]
+[Route("api/[controller]")]
+public class HostexController : ApiController
+{
+    private readonly HostexApiClient _httpHostexApiClient;
+
+    public HostexController(HostexApiClient httpHostexApiClient)
+    {
+        _httpHostexApiClient = httpHostexApiClient;
+    }
+
+    // Propriedades
+    [HttpGet("properties")]
+    public async Task<IActionResult> GetProperties(int offset = 0, int limit = 20)
+    {
+        try
+        {
+            var properties = await _httpHostexApiClient.GetProperties(offset, limit);
+            return Ok(properties);
+        }
+        catch (HttpRequestException ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
+    }
+}
+```
