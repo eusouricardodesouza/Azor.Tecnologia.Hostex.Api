@@ -6,11 +6,13 @@ namespace Azor.Tecnologia.Hostex.Api
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddAzorHostexApi(this IServiceCollection services, string baseUrl, string hostexAccessToken)
+        public static IServiceCollection AddAzorHostexApi(this IServiceCollection services, string hostexAccessToken)
         {
+            var url = new Uri("https://api.hostex.io/v3/");
+
             services.AddHttpClient<HostexApiClient>("HostexService", client =>
             {
-                client.BaseAddress = new Uri(baseUrl);
+                client.BaseAddress = url;
                 client.DefaultRequestHeaders.Add("accept", "application/json");
                 client.DefaultRequestHeaders.Add("Hostex-Access-Token", hostexAccessToken);
             });
