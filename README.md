@@ -13,3 +13,19 @@ Preciso criar novas apis para integrar com Expedia?
 ```python
 Documentação da API
 https://hostex-openapi.readme.io/reference/overview
+
+
+```python
+# Como Utilizar o pacote no projeto?
+
+Instale o pacote pelos comandos
+
+# .Net core
+dotnet add package AzorHostexApi --version x.x.x
+ou
+Install-Package AzorHostexApi -Version x.x.x 
+
+Dentro do program.cs do seu projeto, instancia a api no services:
+builder.Services.AddAzorHostexApi(hostexAccessToken);
+
+Sendo o hostexAccessToken o token que você cria junto a conta diretamente no cadastro com a Hostex
