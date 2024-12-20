@@ -1,13 +1,13 @@
 ﻿using System.Net.Http.Json;
 
-namespace AzorHostexApi.Clients
+namespace Azor.Tecnologia.Hostex.Api.Clients
 {
-    public class HttpHostexApiClient
+    public class BaseApiClient
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly HttpClient _httpClient;
 
-        public HttpHostexApiClient(IHttpClientFactory httpClientFactory)
+        public BaseApiClient(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
             _httpClient = _httpClientFactory.CreateClient("HostexService");
@@ -35,6 +35,11 @@ namespace AzorHostexApi.Clients
             }
 
             throw new HttpRequestException($"Erro ao acessar {endpoint}: {response.ReasonPhrase}");
+        }
+
+        public dynamic Error(Exception exception)
+        {
+            return new { error = exception.Message };
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using AzorHostexApi.Webhooks.Events;
+﻿using Azor.Tecnologia.Hostex.Api.Webhooks.Events;
 using Newtonsoft.Json;
 
-namespace AzorHostexApi.Webhooks
+namespace Azor.Tecnologia.Hostex.Api.Webhooks
 {
     public class WebhookService
     {// Define delegados para os eventos

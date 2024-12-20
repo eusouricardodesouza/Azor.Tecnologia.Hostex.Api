@@ -1,8 +1,8 @@
-﻿using AzorHostexApi.Clients;
-using AzorHostexApi.Webhooks;
+﻿using Azor.Tecnologia.Hostex.Api.Clients;
+using Azor.Tecnologia.Hostex.Api.Webhooks;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AzorHostexApi
+namespace Azor.Tecnologia.Hostex.Api
 {
     public static class ServiceCollectionExtensions
     {
@@ -16,7 +16,6 @@ namespace AzorHostexApi
             });
 
             services.AddSingleton<WebhookService>();
-            services.AddScoped<HttpHostexApiClient>();
             services.AddScoped<HostexApiClient>();
             return services;
         }

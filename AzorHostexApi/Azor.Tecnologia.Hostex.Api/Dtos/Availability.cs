@@ -1,4 +1,4 @@
-﻿namespace AzorHostexApi.WebHooks.Dtos
+﻿namespace Azor.Tecnologia.Hostex.Api.Dtos
 {
     public class Availability
     {

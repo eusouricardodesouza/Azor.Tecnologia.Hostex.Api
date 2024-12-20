@@ -1,4 +1,4 @@
-﻿namespace AzorHostexApi.Webhooks.Events
+﻿namespace Azor.Tecnologia.Hostex.Api.Webhooks.Events
 {
     public class ReservationCreatedEvent
     {

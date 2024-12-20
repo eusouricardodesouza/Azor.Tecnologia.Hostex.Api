@@ -1,19 +1,21 @@
-﻿namespace AzorHostexApi.Clients
+﻿
+using Azor.Tecnologia.Hostex.Api.Dtos.Properties;
+using Azor.Tecnologia.Hostex.Api.Dtos.Rooms;
+
+namespace Azor.Tecnologia.Hostex.Api.Clients
 {
     public class HostexApiClient : BaseApiClient
     {
-        private readonly HttpHostexApiClient _httpHostexApiClient;
-
-        public HostexApiClient(HttpHostexApiClient httpHostexApiClient)
+        public HostexApiClient(IHttpClientFactory httpClientFactory) 
+            : base(httpClientFactory)
         {
-            _httpHostexApiClient = httpHostexApiClient;
         }
 
-        public async Task<dynamic> GetProperties(int offset = 0, int limit = 20)
+        public async Task<PropertyResponse> GetProperties(int offset = 0, int limit = 20)
         {
             try
             {
-                var properties = await _httpHostexApiClient.GetAsync<object>($"properties?offset={offset}&limit={limit}");
+                var properties = await GetAsync<PropertyResponse>($"properties?offset={offset}&limit={limit}");
                 return properties;
             }
             catch (HttpRequestException ex)
@@ -23,11 +25,11 @@
         }
 
         // Tipos de Quartos
-        public async Task<dynamic> GetRoomTypes()
+        public async Task<RoomResponse> GetRoomTypes(int offset = 0, int limit = 20)
         {
             try
             {
-                var roomTypes = await _httpHostexApiClient.GetAsync<object>("room_types");
+                var roomTypes = await GetAsync<RoomResponse>($"room_types?offset={offset}&limit={limit}");
                 return roomTypes;
             }
             catch (HttpRequestException ex)
@@ -41,7 +43,7 @@
         {
             try
             {
-                var reservations = await _httpHostexApiClient.GetAsync<object>("reservations");
+                var reservations = await GetAsync<object>("reservations");
                 return reservations;
             }
             catch (HttpRequestException ex)
@@ -54,7 +56,7 @@
         {
             try
             {
-                var response = await _httpHostexApiClient.PostAsync<object>("reservations", reservationData);
+                var response = await PostAsync<object>("reservations", reservationData);
                 return response;
             }
             catch (HttpRequestException ex)
@@ -68,7 +70,7 @@
             try
             {
                 // Endpoint esperado para cancelar uma reserva.
-                var response = await _httpHostexApiClient.PostAsync<object>($"reservations/{id}/cancel", new { });
+                var response = await PostAsync<object>($"reservations/{id}/cancel", new { });
                 return new { message = "Reserva cancelada com sucesso.", data = response };
             }
             catch (HttpRequestException ex)
@@ -82,7 +84,7 @@
         {
             try
             {
-                var availabilities = await _httpHostexApiClient.GetAsync<object>($"availabilities?property_ids={propertyIds}&start_date={startDate}&end_date={endDate}");
+                var availabilities = await GetAsync<object>($"availabilities?property_ids={propertyIds}&start_date={startDate}&end_date={endDate}");
                 return availabilities;
             }
             catch (HttpRequestException ex)
@@ -95,7 +97,7 @@
         {
             try
             {
-                var response = await _httpHostexApiClient.PostAsync<object>("availabilities", availabilityData);
+                var response = await PostAsync<object>("availabilities", availabilityData);
                 return response;
             }
             catch (HttpRequestException ex)
@@ -109,7 +111,7 @@
         {
             try
             {
-                var calendars = await _httpHostexApiClient.PostAsync<object>("listings/calendar", calendarRequest);
+                var calendars = await PostAsync<object>("listings/calendar", calendarRequest);
                 return calendars;
             }
             catch (HttpRequestException ex)
@@ -122,7 +124,7 @@
         {
             try
             {
-                var response = await _httpHostexApiClient.PostAsync<object>("listings/inventories", inventoryData);
+                var response = await PostAsync<object>("listings/inventories", inventoryData);
                 return response;
             }
             catch (HttpRequestException ex)
@@ -135,7 +137,7 @@
         {
             try
             {
-                var response = await _httpHostexApiClient.PostAsync<object>("listings/prices", priceData);
+                var response = await PostAsync<object>("listings/prices", priceData);
                 return response;
             }
             catch (HttpRequestException ex)
@@ -148,7 +150,7 @@
         {
             try
             {
-                var response = await _httpHostexApiClient.PostAsync<object>("listings/restrictions", restrictionData);
+                var response = await PostAsync<object>("listings/restrictions", restrictionData);
                 return response;
             }
             catch (HttpRequestException ex)
@@ -162,7 +164,7 @@
         {
             try
             {
-                var conversations = await _httpHostexApiClient.GetAsync<object>($"conversations?offset={offset}&limit={limit}");
+                var conversations = await GetAsync<object>($"conversations?offset={offset}&limit={limit}");
                 return conversations;
             }
             catch (HttpRequestException ex)
@@ -175,7 +177,7 @@
         {
             try
             {
-                var conversationDetails = await _httpHostexApiClient.GetAsync<object>($"conversations/{conversationId}");
+                var conversationDetails = await GetAsync<object>($"conversations/{conversationId}");
                 return conversationDetails;
             }
             catch (HttpRequestException ex)
@@ -188,7 +190,7 @@
         {
             try
             {
-                var response = await _httpHostexApiClient.PostAsync<object>("conversations", messageData);
+                var response = await PostAsync<object>("conversations", messageData);
                 return response;
             }
             catch (HttpRequestException ex)
@@ -233,7 +235,7 @@
                     url += $"&end_check_out_date={reservationCode}";
                 }
 
-                var reviews = await _httpHostexApiClient.GetAsync<object>(url);
+                var reviews = await GetAsync<object>(url);
                 return reviews;
             }
             catch (HttpRequestException ex)
@@ -246,7 +248,7 @@
         {
             try
             {
-                var response = await _httpHostexApiClient.PostAsync<object>("reviews", reviewData);
+                var response = await PostAsync<object>("reviews", reviewData);
                 return response;
             }
             catch (HttpRequestException ex)

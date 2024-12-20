@@ -5,12 +5,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageId>AzorHostexApi</PackageId>
-    <Version>1.12.3</Version>
+    <PackageId>Azor.Tecnologia.Hostex.Api</PackageId>
+    <Version>1.12.4</Version>
     <Authors>Ricardo de Souza</Authors>
     <Description>Client API para integração com Hostex, incluindo suporte a Webhooks.</Description>
     <PackageTags>Azor Tecnologia - Hostex API Webhooks Integration</PackageTags>
-    <RepositoryUrl>https://github.com/eusouricardodesouza/AzorHostexApi</RepositoryUrl>
+    <RepositoryUrl>https://github.com/eusouricardodesouza/Azor.Tecnologia.Hostex.Api</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
