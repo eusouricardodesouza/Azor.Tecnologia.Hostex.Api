@@ -25,7 +25,7 @@ dotnet add package AzorHostexApi --version x.x.x
 ou
 Install-Package AzorHostexApi -Version x.x.x 
 
-Dentro do program.cs do seu projeto, instancia a api no services:
+Dentro do program.cs do seu projeto, instancie a api no services:
 builder.Services.AddAzorHostexApi(hostexAccessToken);
 
 Sendo o hostexAccessToken o token que você cria junto a conta diretamente no cadastro com a Hostex
