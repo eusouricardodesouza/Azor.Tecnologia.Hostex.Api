@@ -10,12 +10,12 @@ Documentação do Hostex disponível no link [Documentação](https://hostex-ope
 Preciso criar novas apis para integrar com Expedia? 
 *Não, basta apenas acessar o portal do Hostex no link "https://hostex.io/app/connected-accounts/list" para conectar com a sua conta.
 
-```python
+```bash
 Documentação da API
 https://hostex-openapi.readme.io/reference/overview
+```
 
-
-```python
+```bash
 # Como Utilizar o pacote no projeto?
 
 Instale o pacote pelos comandos
@@ -29,3 +29,4 @@ Dentro do program.cs do seu projeto, instancie a api no services:
 builder.Services.AddAzorHostexApi(hostexAccessToken);
 
 Sendo o hostexAccessToken o token que você cria junto a conta diretamente no cadastro com a Hostex
+```
