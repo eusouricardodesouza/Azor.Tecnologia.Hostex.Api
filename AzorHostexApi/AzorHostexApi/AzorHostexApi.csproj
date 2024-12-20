@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>AzorHostexApi</PackageId>
+    <Version>1.12.3</Version>
+    <Authors>Ricardo de Souza</Authors>
+    <Description>Client API para integração com Hostex, incluindo suporte a Webhooks.</Description>
+    <PackageTags>Azor Tecnologia - Hostex API Webhooks Integration</PackageTags>
+    <RepositoryUrl>https://github.com/eusouricardodesouza/AzorHostexApi</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+</Project>
